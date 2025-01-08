@@ -10,8 +10,8 @@ class DistilBERT(nn.Module):
         self, vocab_size, embed_size, hidden_size, num_layers, num_classes, max_length
     ):
         super(DistilBERT, self).__init__()
-        self.embedding = nn.Embedding(vocab_size, embed_size)
-        self.position_embedding = nn.Embedding(max_length, embed_size)
+        self.embedding = Embeddings(vocab_size, embed_size)
+        self.position_embedding = Embeddings(max_length, embed_size)
         self.encoder = DistilBERTEncoder(embed_size, hidden_size, num_layers)
         self.classifier = nn.Linear(embed_size, num_classes)
 
